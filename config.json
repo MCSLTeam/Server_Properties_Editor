@@ -1,0 +1,9 @@
+{
+    "plugin_name": "Server_Properties_Editor",
+    "version": "1.0.0",
+    "description": "服务器server.properties编辑器",
+    "icon": ":/built-InIcons/Cloth.png",
+    "author": "落雪无痕LxHTT",
+    "author_email": "lxhtt@mcsl.com.cn",
+    "on_new_thread": false
+  }
