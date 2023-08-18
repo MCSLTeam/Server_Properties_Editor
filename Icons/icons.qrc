@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="speIcons">
+    <file>Redo_White.svg</file>
+    <file>Redo_Black.svg</file>
+    <file>Undo_White.svg</file>
+    <file>Undo_Black.svg</file>
+  </qresource>
+</RCC>
