@@ -1,4 +1,5 @@
 from PyQt5.QtCore import Qt, QRect, QSize
+from PyQt5.QtGui import QIcon
 from MCSL2Lib.singleton import Singleton
 from PyQt5.QtWidgets import (
     QWidget,
@@ -18,12 +19,15 @@ from qfluentwidgets import (
     TitleLabel,
     ToolButton,
     TransparentToolButton,
+    FluentIcon as FIF,
 )
+from MCSL2Lib.variables import GlobalMCSL2Variables
+from .speIcons import *  # noqa: F401
+from .speVariables import SPEIconsSetter, SPEVariables
 
 @Singleton
 class SPEMainUI(QWidget):
     def __init__(self):
-
         super().__init__()
 
         self.setObjectName("SPEMainUI")
@@ -38,13 +42,16 @@ class SPEMainUI(QWidget):
 
         self.undoBtn = TransparentToolButton(self)
         self.undoBtn.setObjectName("undoBtn")
+        self.undoBtn.setIcon(QIcon(SPEIconsSetter.Undo()))
 
         self.gridLayout.addWidget(self.undoBtn, 4, 3, 1, 1)
         self.StrongBodyLabel = StrongBodyLabel(self)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.StrongBodyLabel.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.StrongBodyLabel.sizePolicy().hasHeightForWidth()
+        )
         self.StrongBodyLabel.setSizePolicy(sizePolicy)
         self.StrongBodyLabel.setObjectName("StrongBodyLabel")
 
@@ -80,6 +87,7 @@ class SPEMainUI(QWidget):
         self.gridLayout.addWidget(self.selectServerComboBox, 4, 2, 1, 1)
         self.redoBtn = TransparentToolButton(self)
         self.redoBtn.setObjectName("redoBtn")
+        self.redoBtn.setIcon(QIcon(SPEIconsSetter.Redo()))
 
         self.gridLayout.addWidget(self.redoBtn, 4, 4, 1, 1)
         self.propertiesSmoothScrollArea = SmoothScrollArea(self)
@@ -89,7 +97,9 @@ class SPEMainUI(QWidget):
 
         self.propertiesScrollAreaWidgetContents = QWidget()
         self.propertiesScrollAreaWidgetContents.setGeometry(QRect(0, 0, 664, 327))
-        self.propertiesScrollAreaWidgetContents.setObjectName("propertiesScrollAreaWidgetContents")
+        self.propertiesScrollAreaWidgetContents.setObjectName(
+            "propertiesScrollAreaWidgetContents"
+        )
 
         self.gridLayout_2 = QGridLayout(self.propertiesScrollAreaWidgetContents)
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -99,7 +109,9 @@ class SPEMainUI(QWidget):
         self.verticalLayout.setObjectName("verticalLayout")
 
         self.gridLayout_2.addLayout(self.verticalLayout, 0, 0, 1, 1)
-        self.propertiesSmoothScrollArea.setWidget(self.propertiesScrollAreaWidgetContents)
+        self.propertiesSmoothScrollArea.setWidget(
+            self.propertiesScrollAreaWidgetContents
+        )
         self.gridLayout.addWidget(self.propertiesSmoothScrollArea, 6, 1, 1, 5)
         spacerItem = QSpacerItem(20, 5, QSizePolicy.Minimum, QSizePolicy.Fixed)
         self.gridLayout.addItem(spacerItem, 3, 2, 1, 1)
@@ -111,7 +123,9 @@ class SPEMainUI(QWidget):
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.subtitleWidget.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.subtitleWidget.sizePolicy().hasHeightForWidth()
+        )
         self.subtitleWidget.setSizePolicy(sizePolicy)
         self.subtitleWidget.setMinimumSize(QSize(0, 30))
         self.subtitleWidget.setObjectName("subtitleWidget")
@@ -140,7 +154,7 @@ class SPEMainUI(QWidget):
         self.gridLayout_4 = QGridLayout(self.updateWidget)
         self.gridLayout_4.setObjectName("gridLayout_4")
 
-        self.checkUpdateBtn = ToolButton(self.updateWidget)
+        self.checkUpdateBtn = ToolButton(FIF.UPDATE, self.updateWidget)
         self.checkUpdateBtn.setObjectName("checkUpdateBtn")
 
         self.gridLayout_4.addWidget(self.checkUpdateBtn, 0, 1, 1, 1)
@@ -168,4 +182,7 @@ class SPEMainUI(QWidget):
         self.propertyValueSTitle.setText("值")
         self.tipSTitle.setText("注释")
         self.currentVersionTitle.setText("当前版本：")
-        self.currentVersionValue.setText("[版本]")
+        self.currentVersionValue.setText(SPEVariables.speVersion)
+        self.propertiesSmoothScrollArea.viewport().setStyleSheet(
+            GlobalMCSL2Variables.scrollAreaViewportQss
+        )
