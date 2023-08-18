@@ -13,10 +13,10 @@ def load():
 
 def enable():
     try:
-        Window().addSubInterface(speMainUI, FIF.APPLICATION, "示例")
+        Window().addSubInterface(speMainUI, FIF.DEVELOPER_TOOLS, "SPE")
         InfoBar.success(
-            title="插件加载提示",
-            content="Server_Properties_Editor启用成功！",
+            title="提示",
+            content="Server_Properties_Editor已启用。",
             orient=Qt.Horizontal,
             isClosable=True,
             position=InfoBarPosition.BOTTOM_LEFT,
@@ -25,7 +25,7 @@ def enable():
         )
     except Exception as e:
         InfoBar.error(
-            title="插件加载提示",
+            title="提示",
             content=f"Server_Properties_Editor启用失败！\n{e}",
             orient=Qt.Horizontal,
             isClosable=True,
@@ -36,8 +36,28 @@ def enable():
 
 
 def disable():
-    # Window().
-    pass
+    try:
+        Window().navigationBar.removeWidget(routeKey=speMainUI.objectName())
+        speMainUI.setParent(None)
+        InfoBar.success(
+            title="提示",
+            content="Server_Properties_Editor已禁用。",
+            orient=Qt.Horizontal,
+            isClosable=True,
+            position=InfoBarPosition.BOTTOM_LEFT,
+            duration=2500,
+            parent=Window().pluginsInterface,
+        )
+    except Exception as e:
+        InfoBar.error(
+            title="提示",
+            content=f"Server_Properties_Editor禁用失败！\n{e}",
+            orient=Qt.Horizontal,
+            isClosable=True,
+            position=InfoBarPosition.BOTTOM_LEFT,
+            duration=2500,
+            parent=Window().pluginsInterface,
+        )
 
 
 # 注册加载代码
