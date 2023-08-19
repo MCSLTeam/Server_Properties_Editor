@@ -3,10 +3,9 @@ from PyQt5.QtCore import QSize
 from qfluentwidgets import BodyLabel, CardWidget, LineEdit
 
 
-class singlePropertiesWidget(CardWidget):
+class PropertiesWidget(CardWidget):
     def __init__(self):
         super().__init__()
-        self.setObjectName("singlePropertiesWidget")
 
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -49,7 +48,7 @@ class singlePropertiesWidget(CardWidget):
         spacerItem2 = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem2)
         self.tip = BodyLabel(self)
-        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.tip.sizePolicy().hasHeightForWidth())

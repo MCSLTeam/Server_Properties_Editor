@@ -234,5 +234,9 @@
     "announce-player-achievements": [
         "布尔值",
         "(仅Java版1.12前版本)用于切换是否成就要广播给所有玩家。"
+    ],
+    "snooper-enabled": [
+        "布尔值",
+        "是否允许服务端定期发送统计数据到Mojang官方。"
     ]
 }
