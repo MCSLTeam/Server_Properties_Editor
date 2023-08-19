@@ -5,7 +5,7 @@
 为MCSL2量身打造。  
 ### 安装方法  
 #### 下载插件  
-先[点击此处](https://ghproxy.com/https://github.com/MCSLTeam/Server_Properties_Editor/releases)下载最新版插件。  
+先[点击此处](https://github.com/MCSLTeam/Server_Properties_Editor/releases)下载最新版插件。  
 #### 解压  
 解压压缩包。  
 #### 安装  
@@ -14,8 +14,14 @@
 ```
 Plugins
    |-Server_Properties_Editor
+        |-LICENSE
         |-config.json
+        |-properties.json
         |-Server_Properties_Editor.py
+        |-singlePropertiesWidget.py
+        |-speCheckUpdate.py
+        |-speInterface.py
+        |-speVariables.py
    |-其他插件（可能）
 ```
 #### 启用  
