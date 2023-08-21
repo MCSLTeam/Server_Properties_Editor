@@ -1,28 +1,17 @@
 ![大头图](https://socialify.git.ci/MCSLTeam/Server_Properties_Editor/image?description=1&font=Jost&issues=1&language=1&logo=https://img.fastmirror.net/s/2023/07/17/64b5471e1d478.png)
-
+最新版本： [![](https://img.shields.io/github/v/tag/MCSLTeam/Server_Properties_Editor?label=ver&style=for-the-badge "Version")](https://github.com/MCSLTeam/Server_Properties_Editor/releases/latest)  
+下载次数： [![](https://img.shields.io/github/downloads/MCSLTeam/Server_Properties_Editor/total?style=for-the-badge "Downloads")](https://github.com/MCSLTeam/Server_Properties_Editor/releases)  
+开源许可证： [![](https://img.shields.io/github/license/MCSLTeam/Server_Properties_Editor?style=for-the-badge "License")](https://github.com/MCSLTeam/Server_Properties_Editor/blob/master/LICENSE)
 ### 前言
 这是一个服务器server.properties编辑器。  
 为MCSL2量身打造。  
+支持MCSL2 2.2.1.0及以上版本。  
 ### 安装方法  
 #### 下载插件  
 先[点击此处](https://github.com/MCSLTeam/Server_Properties_Editor/releases)下载最新版插件。  
 #### 解压  
 解压压缩包。  
 #### 安装  
-将解压后的整个文件夹复制进MCSL2程序目录中的Plugins文件夹。  
-在完成后，文件目录应如下所示：
-```
-Plugins
-   |-Server_Properties_Editor
-        |-LICENSE
-        |-config.json
-        |-properties.json
-        |-Server_Properties_Editor.py
-        |-singlePropertiesWidget.py
-        |-speCheckUpdate.py
-        |-speInterface.py
-        |-speVariables.py
-   |-其他插件（可能）
-```
+打开MCSL2插件页面，点击“安装插件”，选择此插件的压缩包。安装后，请重启MCSL2。  
 #### 启用  
 在MCSL2的`插件`页面启用此插件，然后，你就会在菜单栏上找到此插件了。
