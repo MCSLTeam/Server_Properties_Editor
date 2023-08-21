@@ -1,4 +1,4 @@
-![大头图](https://socialify.git.ci/MCSLTeam/Server_Properties_Editor/image?description=1&font=Jost&issues=1&language=1&logo=https://img.fastmirror.net/s/2023/07/17/64b5471e1d478.png)
+![大头图](https://socialify.git.ci/MCSLTeam/Server_Properties_Editor/image?description=1&font=Jost&language=1&owner=1&pattern=Circuit%20Board&theme=Auto&logo=https://img.fastmirror.net/s/2023/07/17/64b5471e1d478.png)
 最新版本： [![](https://img.shields.io/github/v/tag/MCSLTeam/Server_Properties_Editor?label=ver&style=for-the-badge "Version")](https://github.com/MCSLTeam/Server_Properties_Editor/releases/latest)  
 下载次数： [![](https://img.shields.io/github/downloads/MCSLTeam/Server_Properties_Editor/total?style=for-the-badge "Downloads")](https://github.com/MCSLTeam/Server_Properties_Editor/releases)  
 开源许可证： [![](https://img.shields.io/github/license/MCSLTeam/Server_Properties_Editor?style=for-the-badge "License")](https://github.com/MCSLTeam/Server_Properties_Editor/blob/master/LICENSE)
