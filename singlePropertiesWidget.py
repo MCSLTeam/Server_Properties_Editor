@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QHBoxLayout, QSpacerItem, QSizePolicy
+from PyQt5.QtWidgets import QHBoxLayout, QSpacerItem, QSizePolicy, QWidget
 from PyQt5.QtCore import QSize
 from qfluentwidgets import BodyLabel, CardWidget, LineEdit
 
@@ -56,10 +56,26 @@ class PropertiesWidget(CardWidget):
         self.tip.setMinimumSize(QSize(190, 0))
         self.tip.setWordWrap(True)
         self.tip.setObjectName("tip")
-        
+
         self.horizontalLayout.addWidget(self.tip)
         spacerItem3 = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem3)
         self.propertyName.setPlaceholderText("配置项")
         # self.propertyValue.setPlaceholderText("值")
         self.tip.setText("[注释]")
+
+    def setValueWidget(self, widget: QWidget):
+        self.propertyValue = widget
+        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(
+            self.propertyValue.sizePolicy().hasHeightForWidth()
+        )
+        self.propertyValue.setSizePolicy(sizePolicy)
+        self.propertyValue.setMinimumSize(QSize(185, 33))
+        self.propertyValue.setObjectName("propertyValue")
+
+    def setValueType(self, t: str, ranged=False, ext=False, _range=(0, 0), _extType = ""):
+        if t == "int" and ranged:
+            pass

@@ -213,6 +213,16 @@ class SPEMainUI(QWidget):
         )
         self.verticalLayout.addWidget(propertiesWidget)
 
+    def addTypedPropertiesWidget(self, name: str, value: str, widgetData: dict):
+        propertiesWidget = PropertiesWidget()
+        propertiesWidget.propertyName.setText(name)
+        # propertiesWidget.propertyValue.setPlaceholderText(widgetData.get("type", ""))
+        # propertiesWidget.propertyValue.setText(value)
+        # propertiesWidget.propertyValue.setObjectName(name)
+        # propertiesWidget.propertyValue.textChanged.connect(self.changeProperties)
+        propertiesWidget.tip.setText(widgetData.get("tip", ""))
+        pass
+
     def changeProperties(self):
         SPEVariables.unSavedServerProperties.update(
             {self.sender().objectName(): self.sender().text()}
