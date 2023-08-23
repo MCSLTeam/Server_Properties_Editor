@@ -1,6 +1,4 @@
 from PyQt5.QtCore import Qt, QRect, QSize, pyqtSlot
-from MCSL2Lib.publicFunctions import openWebUrl
-from MCSL2Lib.singleton import Singleton
 from PyQt5.QtWidgets import (
     QWidget,
     QSizePolicy,
@@ -24,10 +22,13 @@ from qfluentwidgets import (
     InfoBar,
     MessageBox,
 )
+
+from MCSL2Lib.publicFunctions import openWebUrl
+from MCSL2Lib.singleton import Singleton
 from MCSL2Lib.variables import GlobalMCSL2Variables
+from .PropertyWidgets.singlePropertiesWidget import PropertiesWidget
 from .speCheckUpdate import CheckUpdateThread, FetchUpdateIntroThread
 from .speVariables import SPEVariables
-from .singlePropertiesWidget import PropertiesWidget
 
 
 @Singleton

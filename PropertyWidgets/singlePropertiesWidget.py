@@ -1,5 +1,5 @@
-from PyQt5.QtWidgets import QHBoxLayout, QSpacerItem, QSizePolicy, QWidget
 from PyQt5.QtCore import QSize
+from PyQt5.QtWidgets import QHBoxLayout, QSpacerItem, QSizePolicy, QWidget
 from qfluentwidgets import BodyLabel, CardWidget, LineEdit
 
 

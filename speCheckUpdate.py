@@ -1,6 +1,8 @@
-from MCSL2Lib.networkController import Session
 from PyQt5.QtCore import QThread, pyqtSignal
+
+from MCSL2Lib.networkController import Session
 from .speVariables import SPEVariables
+
 
 class CheckUpdateThread(QThread):
     """
