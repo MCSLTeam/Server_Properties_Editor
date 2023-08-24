@@ -26,7 +26,7 @@ from qfluentwidgets import (
 from MCSL2Lib.publicFunctions import openWebUrl
 from MCSL2Lib.singleton import Singleton
 from MCSL2Lib.variables import GlobalMCSL2Variables
-from .PropertyWidgets.singlePropertiesWidget import PropertiesWidget
+from .PropertyWidgets import *
 from .speCheckUpdate import CheckUpdateThread, FetchUpdateIntroThread
 from .speVariables import SPEVariables
 
@@ -215,19 +215,43 @@ class SPEMainUI(QWidget):
         self.verticalLayout.addWidget(propertiesWidget)
 
     def addTypedPropertiesWidget(self, name: str, value: str, widgetData: dict):
-        propertiesWidget = PropertiesWidget()
-        propertiesWidget.propertyName.setText(name)
-        # propertiesWidget.propertyValue.setPlaceholderText(widgetData.get("type", ""))
-        # propertiesWidget.propertyValue.setText(value)
-        # propertiesWidget.propertyValue.setObjectName(name)
-        # propertiesWidget.propertyValue.textChanged.connect(self.changeProperties)
-        propertiesWidget.tip.setText(widgetData.get("tip", ""))
-        pass
+        propertiesWidget = None
+        if (_type := widgetData["type"]) == "str":
+            propertiesWidget = PropertiesWidget()
+        elif _type == "int":
+            propertiesWidget = IntPropertiesWidget()
+        elif _type == "bool":
+            propertiesWidget = BoolPropertiesWidget()
+        elif _type == "enum":
+            propertiesWidget = EnumPropertiesWidget()
+        elif _type == "ext-enum":
+            propertiesWidget = ExtEnumPropertiesWidget()
 
-    def changeProperties(self):
-        SPEVariables.unSavedServerProperties.update(
-            {self.sender().objectName(): self.sender().text()}
+        propertiesWidget.propertyName.setText(name)
+        propertiesWidget.valueChanged.connect(self.changeProperties)
+        propertiesWidget.tip.setText(widgetData.get("tip", ""))
+        propertiesWidget.setData(name, value, widgetData)
+        propertiesWidget.setObjectName(f"{name}Widget")
+        SPEVariables.propertiesLineEditDict.update(
+            {
+                name: value
+            }
         )
+        self.verticalLayout.addWidget(propertiesWidget)
+
+    def changeProperties(self, data=...):
+
+        # 做向前兼容
+        if data is ...:
+            SPEVariables.unSavedServerProperties.update(
+                {self.sender().objectName(): self.sender().text()}
+            )
+
+        # 改进后的API
+        if data is not ...:
+            name, value = data
+            SPEVariables.unSavedServerProperties.update({name: value})
+
         if SPEVariables.unSavedServerProperties != SPEVariables.fileServerProperties:
             self.saveBtn.setEnabled(True)
         else:

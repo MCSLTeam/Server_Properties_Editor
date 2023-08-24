@@ -2,7 +2,10 @@ from PyQt5.QtCore import QSize, Qt
 from PyQt5.QtWidgets import QSizePolicy, QSpacerItem, QHBoxLayout
 from qfluentwidgets import BodyLabel, CardWidget, LineEdit, SwitchButton
 
-class BoolPropertiesWidget(CardWidget):
+from .baseSinglePropertiesWidget import BaseSinglePropertiesWidget
+
+
+class BoolPropertiesWidget(CardWidget, BaseSinglePropertiesWidget):
     def __init__(self):
         super().__init__()
 
@@ -57,3 +60,15 @@ class BoolPropertiesWidget(CardWidget):
         # self.setObjectName("singleBoolPropertiesWidget")
         self.propertyName.setPlaceholderText("配置项")
         # self.tip.setText("[注释]")
+
+        self.boolSwitcher.checkedChanged.connect(self.onValueChanged)
+
+    def onValueChanged(self, value):
+        if value:
+            self.valueChanged.emit((self.propertyNameText,"true"))
+        else:
+            self.valueChanged.emit((self.propertyNameText,"false"))
+
+    def setData(self, name: str, value: str, data: dict):
+        super().setData(name, value, data)
+        self.boolSwitcher.setChecked(value == "true")

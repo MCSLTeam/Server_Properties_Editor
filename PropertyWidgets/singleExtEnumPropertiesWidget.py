@@ -1,8 +1,12 @@
-from PyQt5.QtCore import QSize
+from PyQt5.QtCore import QSize, QRegExp
+from PyQt5.QtGui import QRegExpValidator, QIntValidator
 from PyQt5.QtWidgets import QSizePolicy, QSpacerItem, QHBoxLayout, QVBoxLayout, QWidget
-from qfluentwidgets import BodyLabel, CardWidget, LineEdit, LineEdit, RadioButton, ComboBox
+from qfluentwidgets import BodyLabel, CardWidget, LineEdit, RadioButton, ComboBox
 
-class ExtEnumPropertiesWidget(CardWidget):
+from .baseSinglePropertiesWidget import BaseSinglePropertiesWidget
+
+
+class ExtEnumPropertiesWidget(CardWidget, BaseSinglePropertiesWidget):
     def __init__(self):
         super().__init__()
 
@@ -89,3 +93,34 @@ class ExtEnumPropertiesWidget(CardWidget):
         self.propertyName.setPlaceholderText("配置项")
         self.extEnumToggler.setText("其他")
         # self.tip.setText("[注释]")
+
+        self.extEnumValue.textChanged.connect(self.onWidgetStateChanged)
+        self.extEnumToggler.toggled.connect(self.onWidgetStateChanged)
+        self.extEnumComboxBox.currentTextChanged.connect(self.onWidgetStateChanged)
+
+    def onWidgetStateChanged(self, value):
+        if self.extEnumToggler.isChecked():
+            self.extEnumValue.setEnabled(True)
+            self.extEnumComboxBox.setEnabled(False)
+            self.onValueChanged(self.extEnumValue.text())
+        else:
+            self.extEnumValue.setEnabled(False)
+            self.extEnumComboxBox.setEnabled(True)
+            self.onValueChanged(self.extEnumComboxBox.currentText())
+
+    def setData(self, name: str, value: str, data: dict):
+        super().setData(name, value, data)
+        values = data.get("values", [])
+        values = list(map(lambda x: str(x), values))
+        self.extEnumComboxBox.addItems(values)
+        self.extEnumToggler.setChecked(value not in data.get("values", []))
+        if self.extEnumToggler.isChecked():
+            self.extEnumValue.setText(value)
+            self.extEnumComboxBox.setEnabled(False)
+        else:
+            self.extEnumComboxBox.setCurrentText(value)
+            self.extEnumValue.setText(data.get('ext-type', ''))
+            self.extEnumValue.setEnabled(False)
+        if extRange := data.get('ext-range', []):
+            self.extEnumValue.setValidator(QIntValidator(extRange[0], extRange[1]))
+            self.tip.setText(self.tip.text() + f"\n>>>>  [注释] 取值范围: {extRange[0]} ~ {extRange[1]}  <<<<")

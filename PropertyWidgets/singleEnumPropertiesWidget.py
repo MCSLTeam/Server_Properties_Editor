@@ -1,8 +1,11 @@
 from PyQt5.QtCore import QSize
 from PyQt5.QtWidgets import QSizePolicy, QSpacerItem, QHBoxLayout
-from qfluentwidgets import BodyLabel, CardWidget, LineEdit, LineEdit, ComboBox
+from qfluentwidgets import BodyLabel, CardWidget, LineEdit, ComboBox
 
-class EnumPropertiesWidget(CardWidget):
+from .baseSinglePropertiesWidget import BaseSinglePropertiesWidget
+
+
+class EnumPropertiesWidget(CardWidget, BaseSinglePropertiesWidget):
     def __init__(self):
         super().__init__()
 
@@ -54,3 +57,12 @@ class EnumPropertiesWidget(CardWidget):
         self.horizontalLayout.addItem(spacerItem3)
         self.propertyName.setPlaceholderText("配置项")
         # self.tip.setText("[注释]")
+
+        self.enumComboxBox.currentIndexChanged.connect(
+            lambda index: self.onValueChanged(self.enumComboxBox.itemData(index)))
+
+    def setData(self, name: str, value: str, data: dict):
+        super().setData(name, value, data)
+        values = data.get("values", [])
+        values = list(map(lambda x: str(x), values))
+        self.enumComboxBox.addItems(values)

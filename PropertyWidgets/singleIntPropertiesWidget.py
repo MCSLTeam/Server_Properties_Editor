@@ -1,9 +1,13 @@
 from PyQt5.QtCore import QSize
 from PyQt5.QtWidgets import QSizePolicy, QSpacerItem, QHBoxLayout
-from qfluentwidgets import BodyLabel, CardWidget, LineEdit, LineEdit, SpinBox
+from qfluentwidgets import BodyLabel, CardWidget, LineEdit, SpinBox
 
-class IntPropertiesWidget(CardWidget):
+from .baseSinglePropertiesWidget import BaseSinglePropertiesWidget
+
+
+class IntPropertiesWidget(CardWidget, BaseSinglePropertiesWidget):
     def __init__(self):
+        super().__init__()
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -52,3 +56,13 @@ class IntPropertiesWidget(CardWidget):
         # self.setObjectName("singleIntPropertiesWidget")
         self.propertyName.setPlaceholderText("配置项")
         # self.tip.setText("[注释]")
+
+        self.intSpinBox.valueChanged.connect(self.onValueChanged)
+
+    def setData(self, name: str, value: str, data: dict):
+        super().setData(name, value, data)
+        self.intSpinBox.setRange(-2147483648, 2147483647)
+        self.intSpinBox.setValue(int(value))
+        if _range := data.get("range", []):
+            self.intSpinBox.setRange(*_range)
+            self.tip.setText(self.tip.text() + f"\n>>>>  [注释] 取值范围: {_range[0]} ~ {_range[1]}  <<<<")

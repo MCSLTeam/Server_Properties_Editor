@@ -1,9 +1,11 @@
 from PyQt5.QtCore import QSize
-from PyQt5.QtWidgets import QHBoxLayout, QSpacerItem, QSizePolicy, QWidget
+from PyQt5.QtWidgets import QHBoxLayout, QSpacerItem, QSizePolicy
 from qfluentwidgets import BodyLabel, CardWidget, LineEdit
 
+from .baseSinglePropertiesWidget import BaseSinglePropertiesWidget
 
-class PropertiesWidget(CardWidget):
+
+class PropertiesWidget(CardWidget, BaseSinglePropertiesWidget):
     def __init__(self):
         super().__init__()
 
@@ -64,18 +66,8 @@ class PropertiesWidget(CardWidget):
         # self.propertyValue.setPlaceholderText("值")
         self.tip.setText("[注释]")
 
-    def setValueWidget(self, widget: QWidget):
-        self.propertyValue = widget
-        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            self.propertyValue.sizePolicy().hasHeightForWidth()
-        )
-        self.propertyValue.setSizePolicy(sizePolicy)
-        self.propertyValue.setMinimumSize(QSize(185, 33))
-        self.propertyValue.setObjectName("propertyValue")
+        self.propertyValue.textChanged.connect(self.onValueChanged)
 
-    def setValueType(self, t: str, ranged=False, ext=False, _range=(0, 0), _extType = ""):
-        if t == "int" and ranged:
-            pass
+    def setData(self, name: str, value: str, data: dict):
+        super().setData(name, value, data)
+        self.propertyValue.setText(value)

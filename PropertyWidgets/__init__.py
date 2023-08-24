@@ -1,0 +1,5 @@
+from .singleBoolPropertiesWidget import BoolPropertiesWidget
+from .singleIntPropertiesWidget import IntPropertiesWidget
+from .singleEnumPropertiesWidget import EnumPropertiesWidget
+from .singleExtEnumPropertiesWidget import ExtEnumPropertiesWidget
+from .singlePropertiesWidget import PropertiesWidget

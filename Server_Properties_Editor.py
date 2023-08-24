@@ -8,6 +8,7 @@ from MCSL2Lib.publicFunctions import readGlobalServerConfig
 from MCSL2Lib.windowInterface import Window
 from .speInterface import SPEMainUI
 from .speVariables import SPEVariables
+from .template import ui
 
 Server_Properties_Editor = Plugin()
 speMainUI = SPEMainUI()
@@ -98,7 +99,7 @@ def changeWhichServer(serverName):
 def readServerProperties(serverName):
     try:
         with open(
-            f"./Servers/{serverName}/server.properties", "r", encoding="utf-8"
+                f"./Servers/{serverName}/server.properties", "r", encoding="utf-8"
         ) as serverPropertiesFile:
             lines = serverPropertiesFile.readlines()
             for line in lines:
@@ -150,7 +151,7 @@ def initSPEComboBox():
 
 def loadPropertiesTip():
     with open(
-        "./Plugins/Server_Properties_Editor/properties.json", "r", encoding="utf-8"
+            "./Plugins/Server_Properties_Editor/properties.json", "r", encoding="utf-8"
     ) as propertiesTipFile:
         SPEVariables.tips = loads(propertiesTipFile.read())
 
@@ -163,20 +164,35 @@ def initSPEWidgets():
     speMainUI.clearPropertiesWidget()
     loadPropertiesTip()
     for item in SPEVariables.fileServerProperties:
-        if item in SPEVariables.tips:
-            speMainUI.addPropertiesWidget(
+        # if item in SPEVariables.tips:
+        #     speMainUI.addPropertiesWidget(
+        #         name=item,
+        #         value=SPEVariables.fileServerProperties[item],
+        #         valueType=SPEVariables.tips[item][0],
+        #         tip=SPEVariables.tips[item][1],
+        #     )
+        # else:
+        #     speMainUI.addPropertiesWidget(
+        #         name=item,
+        #         value=SPEVariables.fileServerProperties[item],
+        #         valueType="",
+        #         tip="",
+        #     )
+        widgetData = ui["Java"].get(item, {})
+        if widgetData:
+            speMainUI.addTypedPropertiesWidget(
                 name=item,
                 value=SPEVariables.fileServerProperties[item],
-                valueType=SPEVariables.tips[item][0],
-                tip=SPEVariables.tips[item][1],
+                widgetData=widgetData
             )
         else:
             speMainUI.addPropertiesWidget(
                 name=item,
                 value=SPEVariables.fileServerProperties[item],
                 valueType="",
-                tip="",
+                tip=""
             )
+            print(f"未找到{item}的widgetData")
     speMainUI.saveBtn.clicked.connect(saveProperties)
 
 
@@ -184,9 +200,9 @@ def saveProperties():
     try:
         SPEVariables.fileServerProperties = SPEVariables.unSavedServerProperties.copy()
         with open(
-            f"./Servers/{SPEVariables.serverList[speMainUI.selectServerComboBox.currentIndex()]}/server.properties",
-            "w+",
-            encoding="utf-8",
+                f"./Servers/{SPEVariables.serverList[speMainUI.selectServerComboBox.currentIndex()]}/server.properties",
+                "w+",
+                encoding="utf-8",
         ) as saveProperties:
             content = "#Minecraft server properties\n#Edited by Server Properties Editor made by LxHTT\n"
             for property in SPEVariables.fileServerProperties:

@@ -1,6 +1,6 @@
 class SPEVariables:
     firstLoad: bool = True
-    speVersion = "1.0.0"
+    speVersion = "1.0.1"
     serverList = []
     fileServerProperties = {}
     unSavedServerProperties = {}
