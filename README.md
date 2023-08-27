@@ -6,7 +6,7 @@
 支持MCSL2 2.2.1.0及以上版本。  
 ### 安装方法  
 #### 下载插件  
-先[点击此处](https://github.com/MCSLTeam/Server_Properties_Editor/releases)下载最新版插件。  
+先[点击此处](https://github.com/MCSLTeam/Server_Properties_Editor/releases/latest/)下载最新版插件。  
 #### 解压  
 解压压缩包。  
 #### 安装  
