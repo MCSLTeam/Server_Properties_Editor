@@ -206,6 +206,9 @@
    </item>
    <item row="6" column="1" colspan="5">
     <widget class="SmoothScrollArea" name="propertiesSmoothScrollArea">
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
      <property name="verticalScrollBarPolicy">
       <enum>Qt::ScrollBarAsNeeded</enum>
      </property>
@@ -217,8 +220,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>664</width>
-        <height>327</height>
+        <width>666</width>
+        <height>329</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">

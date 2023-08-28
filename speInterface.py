@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import (
     QHBoxLayout,
     QVBoxLayout,
     QSpacerItem,
+    QFrame,
 )
 from qfluentwidgets import (
     BodyLabel,
@@ -183,6 +184,8 @@ class SPEMainUI(QWidget):
         self.currentVersionTitle.setText("当前版本：")
         self.refreshBtn.setText("刷新")
         self.currentVersionValue.setText(SPEVariables.speVersion)
+        
+        self.propertiesSmoothScrollArea.setFrameShape(QFrame.NoFrame)
         self.propertiesSmoothScrollArea.viewport().setStyleSheet(
             GlobalMCSL2Variables.scrollAreaViewportQss
         )
