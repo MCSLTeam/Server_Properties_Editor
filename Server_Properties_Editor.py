@@ -46,7 +46,7 @@ def enable():
 
 def disable():
     try:
-        Window().navigationBar.removeWidget(routeKey=speMainUI.objectName())
+        Window().navigationInterface.removeWidget(routeKey=speMainUI.objectName())
         speMainUI.setParent(None)
         InfoBar.success(
             title="提示",
