@@ -16,7 +16,6 @@ class ExtEnumPropertiesWidget(CardWidget, BaseSinglePropertiesWidget):
         sizePolicy.setHeightForWidth(self.sizePolicy().hasHeightForWidth())
         self.setSizePolicy(sizePolicy)
         self.setMinimumSize(QSize(644, 0))
-        self.setMaximumSize(QSize(16777215, 16777215))
         self.horizontalLayout_2 = QHBoxLayout(self)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
 
@@ -24,7 +23,7 @@ class ExtEnumPropertiesWidget(CardWidget, BaseSinglePropertiesWidget):
         self.horizontalLayout_2.addItem(spacerItem)
         self.verticalLayout_2 = QVBoxLayout()
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-
+        
         spacerItem1 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
         self.verticalLayout_2.addItem(spacerItem1)
         self.propertyName = LineEdit(self)
@@ -56,17 +55,36 @@ class ExtEnumPropertiesWidget(CardWidget, BaseSinglePropertiesWidget):
         spacerItem5 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem5)
         self.extEnumComboxBox = ComboBox(self)
-        self.extEnumComboxBox.setMinimumSize(QSize(185, 0))
+        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.extEnumComboxBox.sizePolicy().hasHeightForWidth())
+        self.extEnumComboxBox.setSizePolicy(sizePolicy)
+        self.extEnumComboxBox.setMinimumSize(QSize(180, 0))
+        self.extEnumComboxBox.setObjectName("extEnumComboxBox")
 
         self.verticalLayout.addWidget(self.extEnumComboxBox)
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-
         self.extEnumToggler = RadioButton(self)
+        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.extEnumToggler.sizePolicy().hasHeightForWidth())
+        self.extEnumToggler.setSizePolicy(sizePolicy)
+        self.extEnumToggler.setObjectName("extEnumToggler")
 
         self.horizontalLayout.addWidget(self.extEnumToggler)
         self.extEnumValue = LineEdit(self)
-
+        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.extEnumValue.sizePolicy().hasHeightForWidth())
+        self.extEnumValue.setSizePolicy(sizePolicy)
+        self.extEnumValue.setMinimumSize(QSize(111, 33))
+        self.extEnumValue.setMaximumSize(QSize(111, 33))
+        self.extEnumValue.setObjectName("extEnumValue")
+        
         self.horizontalLayout.addWidget(self.extEnumValue)
         self.verticalLayout.addLayout(self.horizontalLayout)
         spacerItem6 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
@@ -81,7 +99,6 @@ class ExtEnumPropertiesWidget(CardWidget, BaseSinglePropertiesWidget):
         self.tip.setMinimumSize(QSize(190, 0))
         self.tip.setWordWrap(True)
         self.tip.setObjectName("tip")
-
         self.horizontalLayout_2.addWidget(self.tip)
         spacerItem7 = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem7)

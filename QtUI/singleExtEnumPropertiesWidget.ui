@@ -156,9 +156,15 @@
      </item>
      <item>
       <widget class="ComboBox" name="extEnumComboxBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="minimumSize">
         <size>
-         <width>185</width>
+         <width>180</width>
          <height>0</height>
         </size>
        </property>
@@ -168,13 +174,38 @@
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="RadioButton" name="extEnumToggler">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="text">
           <string>其他</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="LineEdit" name="extEnumValue"/>
+        <widget class="LineEdit" name="extEnumValue">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>111</width>
+           <height>33</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>111</width>
+           <height>33</height>
+          </size>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
