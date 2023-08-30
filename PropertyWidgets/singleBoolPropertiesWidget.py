@@ -29,6 +29,13 @@ class BoolPropertiesWidget(CardWidget, BaseSinglePropertiesWidget):
         self.propertyName.setSizePolicy(sizePolicy)
         self.propertyName.setMinimumSize(QSize(185, 33))
         self.propertyName.setReadOnly(True)
+        self.propertyName.setReadOnly(True)
+        self.propertyName.setReadOnly(True)
+        self.propertyName.setReadOnly(True)
+        self.propertyName.setReadOnly(True)
+        self.propertyName.setReadOnly(True)
+        self.propertyName.setReadOnly(True)
+        self.propertyName.setReadOnly(True)
         self.propertyName.setObjectName("propertyName")
 
         self.horizontalLayout.addWidget(self.propertyName)
