@@ -1,7 +1,7 @@
 from json import loads
 
 from PyQt5.QtCore import Qt
-from qfluentwidgets import InfoBar, InfoBarPosition, FluentIcon as FIF, MessageBox
+from qfluentwidgets import InfoBar, InfoBarPosition, FluentIcon as FIF, MessageBox, NavigationItemPosition
 
 from Adapters.Plugin import Plugin
 from MCSL2Lib.publicFunctions import readGlobalServerConfig
@@ -20,7 +20,7 @@ def load():
 
 def enable():
     try:
-        Window().addSubInterface(speMainUI, FIF.DEVELOPER_TOOLS, "SPE")
+        Window().addSubInterface(speMainUI, FIF.DEVELOPER_TOOLS, "SPE", position=NavigationItemPosition.SCROLL)
         refreshServerList()
         speMainUI.refreshBtn.clicked.connect(refreshServerList)
         InfoBar.success(
