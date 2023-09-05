@@ -24,7 +24,7 @@ from qfluentwidgets import (
     MessageBox,
 )
 
-from MCSL2Lib.publicFunctions import openWebUrl
+from MCSL2Lib.utils import openWebUrl
 from MCSL2Lib.singleton import Singleton
 from MCSL2Lib.variables import GlobalMCSL2Variables
 from .PropertyWidgets import *

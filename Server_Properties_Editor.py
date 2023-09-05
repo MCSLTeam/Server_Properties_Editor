@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt
 from qfluentwidgets import InfoBar, InfoBarPosition, FluentIcon as FIF, MessageBox, NavigationItemPosition
 
 from Adapters.Plugin import Plugin
-from MCSL2Lib.publicFunctions import readGlobalServerConfig
+from MCSL2Lib.utils import readGlobalServerConfig
 from MCSL2Lib.windowInterface import Window
 from .speInterface import SPEMainUI
 from .speVariables import SPEVariables
