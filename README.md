@@ -3,16 +3,11 @@
 ### 前言
 这是一个服务器server.properties编辑器。  
 为MCSL2量身打造。  
-支持MCSL2 2.2.1.0及以上版本。  
+支持MCSL2 2.2.2.0及以上版本。  
 ### 安装方法  
 #### 下载插件  
 先[点击此处](https://github.com/MCSLTeam/Server_Properties_Editor/releases/latest/)下载最新版插件。  
-#### 解压  
-解压压缩包。  
 #### 安装  
 打开MCSL2插件页面，点击“安装插件”，选择此插件的压缩包并安装。  
 #### 启用  
 在MCSL2的`插件`页面启用此插件，然后，你就会在菜单栏上找到此插件了。
-### TODO
- - 撤销/重做
- - 针对各种属性的优化
