@@ -1,6 +1,6 @@
 from PyQt5.QtCore import QThread, pyqtSignal
 
-from MCSL2Lib.Controllers.networkController import Session
+from MCSL2Lib.ProgramControllers.networkController import Session
 from .speVariables import SPEVariables
 
 
